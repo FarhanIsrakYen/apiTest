@@ -18,7 +18,8 @@
 	
         @yield('content')
 		<script src="https://code.jquery.com/jquery-3.4.1.min.js" integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=" crossorigin="anonymous"></script>
-		<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAHzDfNK7wH-N45ZKRfnv0Prw-VXwm2-Js" async defer></script>
+		<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAHzDfNK7wH-N45ZKRfnv0Prw-VXwm2-Js&libraries=places" async defer></script>
+        
 		<script type="text/javascript" src="{{asset('js/script.js')}}"></script>
 		<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"
 		integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
