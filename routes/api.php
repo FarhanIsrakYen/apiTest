@@ -16,3 +16,4 @@ use Illuminate\Http\Request;
 Route::middleware('auth:api')->get('/user', function (Request $request) {
     return $request->user();
 });
+Route::post('/searchPerson', 'SearchPersonController@searchPerson');// as it is in API route so it will not check for CSRF token

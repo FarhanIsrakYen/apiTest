@@ -11,14 +11,17 @@ $(document).ready(function(){
 	}
 
 	function success(position){
-		console.log(position);
+		
 		var latval= position.coords.latitude;
 		var lngval= position.coords.longitude;
+
+		/*console.log(latval,lngval);*/
 
 		myLatLng= new google.maps.LatLng(latval,lngval);
 		createMap(myLatLng);
 
-		nearBySearch(myLatLng,"school");
+		/*nearBySearch(myLatLng,"school");*/
+		searchPerson(latval,lngval);
 	}
 
 	function fail()
@@ -47,7 +50,7 @@ $(document).ready(function(){
 		  });
 	}
 
-	function nearBySearch(myLatLng,type){
+	/*function nearBySearch(myLatLng,type){
 		var request = {
 		    location: myLatLng,
 		    radius: '2500',
@@ -69,9 +72,22 @@ $(document).ready(function(){
 
 		service = new google.maps.places.PlacesService(map);
 		service.nearbySearch(request, callback);
-	}
+	}*/
 	
+	function searchPerson(lat,lng){
+		$.post('http://localhost:8000/api/searchPerson',{lat:lat,lng:lng},function(match){
+			// console.log(match);
+			$.each(match,function(i,val){
+				var platval=val.lat;
+				var plngval=val.lng;
+				var pname=val.name;
 
+				var PLatLng= new google.maps.LatLng(platval,plngval);
+				var picn= 'https://developers.google.com/maps/documentation/javascript/examples/full/images/beachflag.png';
+				createMarker(PLatLng,picn,pname);
+			});
+		});
+	}
 
 	
 
